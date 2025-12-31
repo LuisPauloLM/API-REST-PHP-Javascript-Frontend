@@ -1,0 +1,378 @@
+API REST em PHP estruturada em MVC com camadas, que implementa CRUD para três entidades: Aplicativo, Usuário e Veículo.
+
+🗂 Estrutura
+
+routes → define rotas HTTP
+
+controllers → lógica de negócio
+
+models → entidades do sistema
+
+DAO → acesso ao banco
+
+middlewares → validações e autenticação (inclui JWT)
+
+http → respostas padronizadas JSON
+
+db → conexão
+
+utils → helpers, logs, tokens
+
+🔄 Fluxo
+
+Requisição HTTP → Router → Middleware (validações) → Controller (lógica) → DAO (banco) → Response (JSON)
+
+🏗 Principais componentes
+
+Router → gerencia rotas (CRUD + exportação/importação)
+
+Controllers → orquestram lógica e chamam DAO
+
+Middlewares → validam dados (e-mail, senha, duplicidade, JWT etc.)
+
+Models → estruturas das entidades
+
+DAOs → CRUD no banco com integridade
+
+Response → formato único de saída
+
+Utils → JWT e logger
+
+⚙️ Recursos Técnicos
+
+Padrões: MVC, REST, DAO, Middleware
+
+Segurança: JWT, CORS, senhas com hash, validações fortes
+
+Extras: Paginação, exportação/importação (CSV/JSON/XML), logs, erros padronizados
+
+📊 Banco de Dados
+
+Usuário → Aplicativo (N:1)
+
+Veículo → Aplicativo (N:1)
+
+🚀 Pontos fortes
+
+Código organizado em camadas
+
+Validações robustas em várias etapas
+
+Tratamento de erros consistente
+
+Flexibilidade de entrada/saída (JSON, CSV, XML)
+
+🛠 Analogia do fluxo
+
+Middleware → checa qualidade da entrada (dados crus)
+
+Controller → monta o objeto final e coordena regras de negócio
+
+DAO → salva e garante integridade no banco
+
+api/
+  src/
+    controllers/
+      AplicativoControl.php
+      UsuarioControl.php
+      VeiculoControl.php
+    DAO/
+      AplicativoDAO.php
+      UsuarioDAO.php
+      VeiculoDAO.php
+    db/
+      Database.php                
+    http/
+      Response.php
+    middlewares/
+      AplicativoMiddleware.php
+      UsuarioMiddleware.php
+      VeiculoMiddleware.php
+      AuthMiddleware.php
+    models/
+      Aplicativo.php
+      Usuario.php
+      Veiculo.php
+    routes/
+      aplicativoRoutes.php
+      usuarioRoutes.php
+      veiculoRoutes.php
+    utils/
+      JwtHelper.php
+      Logger.php
+📌 Explicação rápida de cada pasta:
+
+controllers → lógica de negócio e chamadas aos DAO
+
+DAO → CRUD no banco
+
+db → conexão com MySQL (XAMPP)
+
+http → resposta padronizada JSON
+
+middlewares → validações + autenticação (ex: JWT)
+
+models → definição das entidades
+
+routes → rotas HTTP (GET, POST, PUT, DELETE)
+
+utils → helpers (JWT, logs, etc.)
+
+
+Exemplo de INPUTS JSON:
+POST: 
+{
+  "aplicativo": {
+    "nomeAplicativo": "Meu Novo App",
+    "nomeEmpresa": "Minha Empresa LTDA"
+  }
+}
+
+{
+  "usuario": {
+    "nomeUsuario": "Carlos Santos",
+    "email": "carlos@email.com",
+    "senha": "senhaSegura123",
+    "maiorIdade": true,
+    "aplicativo_idAplicativo": 1
+  }
+}
+
+{
+  "veiculo": {
+    "nomeVeiculo": "Fusca Azul",
+    "usado": true,
+    "aplicativo_idAplicativo": 1
+  }
+}
+
+PUT:
+
+{
+  "aplicativo": {
+    "nomeAplicativo": "Uber Atualizado",
+    "nomeEmpresa": "Uber Technologies Inc."
+  }
+}
+
+{
+  "usuario": {
+    "nomeUsuario": "João Silva Santos",
+    "email": "joao.novo@email.com",
+    "senha": "novaSenha456",
+    "maiorIdade": true,
+    "aplicativo_idAplicativo": 2
+  }
+}
+
+{
+  "veiculo": {
+    "nomeVeiculo": "Toyota Corolla Novo",
+    "usado": false,
+    "aplicativo_idAplicativo": 3
+  }
+}
+
+
+
+🔐 Autenticação
+Login
+POST /login
+Autentica um usuário e retorna um token JWT.
+Headers:
+Content-Type: application/json
+Body:
+json{
+  "usuario": {
+    "email": "usuario@email.com",
+    "senha": "suasenha123"
+  }
+}
+Resposta de Sucesso (200):
+json{
+  "success": true,
+  "message": "Login realizado com sucesso",
+  "data": {
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "usuario": {
+      "idUsuario": 1,
+      "nomeUsuario": "João Silva",
+      "email": "usuario@email.com",
+      "role": "admin",
+      "idAplicativo": 1
+    },
+    "expira_em": "2024-09-25 15:30:00"
+  },
+  "error": []
+}
+Resposta de Erro (401):
+json{
+  "success": false,
+  "message": "Email ou senha inválidos",
+  "data": [],
+  "error": {
+    "code": "auth_error",
+    "message": "Credenciais de autenticação inválidas"
+  }
+}
+
+🛠️ Utilitários
+Reset Database
+POST /reset-database ou GET /reset-database
+Reseta o banco de dados (útil para desenvolvimento).
+
+🎯 Aplicativos
+
+Todas as rotas de aplicativos requerem autenticação JWT no header Authorization: Bearer {token}
+
+Listar Aplicativos
+GET /aplicativos
+Headers:
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+Buscar Aplicativo por ID
+GET /aplicativos/{id}
+Exemplo: GET /aplicativos/1
+Criar Aplicativo
+POST /aplicativos
+Headers:
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+Body:
+json{
+  "aplicativo": {
+    "nomeAplicativo": "Meu App Mobile"
+  }
+}
+Atualizar Aplicativo
+PUT /aplicativos/{id}
+Headers:
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+Body:
+json{
+  "aplicativo": {
+    "nomeAplicativo": "App Mobile Atualizado"
+  }
+}
+Excluir Aplicativo
+DELETE /aplicativos/{id}
+Headers:
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+
+👥 Usuários
+
+Todas as rotas de usuários requerem autenticação JWT no header Authorization: Bearer {token}
+
+Listar Usuários
+GET /usuarios
+Headers:
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+Buscar Usuário por ID
+GET /usuarios/{id}
+Exemplo: GET /usuarios/1
+Criar Usuário
+POST /usuarios
+Headers:
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+Body:
+json{
+  "usuario": {
+    "nomeUsuario": "João Silva",
+    "email": "joao@email.com",
+    "senha": "senha123",
+    "maiorIdade": true,
+    "aplicativo_idAplicativo": 1
+  }
+}
+Atualizar Usuário
+PUT /usuarios/{id}
+Headers:
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+Body:
+json{
+  "usuario": {
+    "nomeUsuario": "João Silva Santos",
+    "email": "joao.santos@email.com",
+    "senha": "novasenha123",
+    "maiorIdade": true,
+    "aplicativo_idAplicativo": 1
+  }
+}
+Nota: O campo senha é opcional na atualização. Se não enviado, a senha não será alterada.
+Excluir Usuário
+DELETE /usuarios/{id}
+Headers:
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+
+🚗 Veículos
+
+Todas as rotas de veículos requerem autenticação JWT no header Authorization: Bearer {token}
+
+Listar Veículos
+GET /veiculos
+Headers:
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+Buscar Veículo por ID
+GET /veiculos/{id}
+Exemplo: GET /veiculos/1
+Criar Veículo
+POST /veiculos
+Headers:
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+Body:
+json{
+  "veiculo": {
+    "nomeVeiculo": "Honda Civic 2020",
+    "usado": false,
+    "aplicativo_idAplicativo": 1
+  }
+}
+Atualizar Veículo
+PUT /veiculos/{id}
+Headers:
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+Body:
+json{
+  "veiculo": {
+    "nomeVeiculo": "Honda Civic 2020 - Seminovo",
+    "usado": true,
+    "aplicativo_idAplicativo": 1
+  }
+}
+Excluir Veículo
+DELETE /veiculos/{id}
+Headers:
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+
+📝 Observações Importantes
+
+Autenticação: Todas as rotas exceto /login e /reset-database requerem token JWT.
+Headers obrigatórios para rotas protegidas:
+Authorization: Bearer {seu_token_jwt}
+
+Headers para requisições com body:
+Content-Type: application/json
+
+Token JWT: Após fazer login, use o token retornado no campo data.token para autenticar as demais requisições.
+Estrutura de resposta padrão:
+json{
+  "success": true/false,
+  "message": "Mensagem descritiva",
+  "data": {}, // Dados retornados
+  "error": {} // Detalhes do erro (quando success = false)
+}
+
+Códigos HTTP comuns:
+
+200: Sucesso
+400: Dados inválidos
+401: Não autorizado (token inválido/ausente)
+404: Recurso não encontrado
+409: Conflito (email/nome já existe)
+500: Erro interno do servidor
+
+

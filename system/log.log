@@ -1,0 +1,449 @@
+[2025-08-23 15:08:44.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[HY000] [1049] Unknown database 'aula_api_2024'
+Code: 1049
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 38
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(38): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\api\src\db\Database.php(22): Database::connect()
+#2 C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php(56): Database::getConnection()
+#3 C:\xampp\htdocs\api\src\controllers\AplicativoControl.php(15): AplicativoDAO->readAll()
+#4 C:\xampp\htdocs\api\src\routes\Roteador.php(83): AplicativoControl->index()
+#5 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#6 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#7 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#8 C:\xampp\htdocs\api\src\routes\Roteador.php(286): Router->run()
+#9 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#10 {main} 
+ **************************************************************************************************** 
+[2025-08-23 15:12:10.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aula_api_2024.aplicativo' doesn't exist
+Code: 42S02
+File: C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php
+Line: 56
+Trace:
+#0 C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php(56): PDO->query('SELECT idAplica...')
+#1 C:\xampp\htdocs\api\src\controllers\AplicativoControl.php(15): AplicativoDAO->readAll()
+#2 C:\xampp\htdocs\api\src\routes\Roteador.php(83): AplicativoControl->index()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#5 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#6 C:\xampp\htdocs\api\src\routes\Roteador.php(286): Router->run()
+#7 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#8 {main} 
+ **************************************************************************************************** 
+[2025-08-23 15:16:17.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aula_api_2024.aplicativo' doesn't exist
+Code: 42S02
+File: C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php
+Line: 56
+Trace:
+#0 C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php(56): PDO->query('SELECT idAplica...')
+#1 C:\xampp\htdocs\api\src\controllers\AplicativoControl.php(15): AplicativoDAO->readAll()
+#2 C:\xampp\htdocs\api\src\routes\Roteador.php(83): AplicativoControl->index()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#5 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#6 C:\xampp\htdocs\api\src\routes\Roteador.php(286): Router->run()
+#7 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#8 {main} 
+ **************************************************************************************************** 
+[2025-08-23 15:19:10.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aula_api_2024.aplicativo' doesn't exist
+Code: 42S02
+File: C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php
+Line: 56
+Trace:
+#0 C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php(56): PDO->query('SELECT idAplica...')
+#1 C:\xampp\htdocs\api\src\controllers\AplicativoControl.php(15): AplicativoDAO->readAll()
+#2 C:\xampp\htdocs\api\src\routes\Roteador.php(83): AplicativoControl->index()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#5 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#6 C:\xampp\htdocs\api\src\routes\Roteador.php(286): Router->run()
+#7 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#8 {main} 
+ **************************************************************************************************** 
+[2025-08-23 15:22:03.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aula_api_2024.aplicativo' doesn't exist
+Code: 42S02
+File: C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php
+Line: 56
+Trace:
+#0 C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php(56): PDO->query('SELECT idAplica...')
+#1 C:\xampp\htdocs\api\src\controllers\AplicativoControl.php(15): AplicativoDAO->readAll()
+#2 C:\xampp\htdocs\api\src\routes\Roteador.php(83): AplicativoControl->index()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#5 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#6 C:\xampp\htdocs\api\src\routes\Roteador.php(286): Router->run()
+#7 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#8 {main} 
+ **************************************************************************************************** 
+[2025-08-23 15:22:06.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aula_api_2024.aplicativo' doesn't exist
+Code: 42S02
+File: C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php
+Line: 56
+Trace:
+#0 C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php(56): PDO->query('SELECT idAplica...')
+#1 C:\xampp\htdocs\api\src\controllers\AplicativoControl.php(15): AplicativoDAO->readAll()
+#2 C:\xampp\htdocs\api\src\routes\Roteador.php(83): AplicativoControl->index()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#5 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#6 C:\xampp\htdocs\api\src\routes\Roteador.php(286): Router->run()
+#7 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#8 {main} 
+ **************************************************************************************************** 
+[2025-08-23 18:23:39.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nomeEmpresa' in 'field list'
+Code: 42S22
+File: C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php
+Line: 56
+Trace:
+#0 C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php(56): PDO->query('SELECT idAplica...')
+#1 C:\xampp\htdocs\api\src\controllers\AplicativoControl.php(15): AplicativoDAO->readAll()
+#2 C:\xampp\htdocs\api\src\routes\Roteador.php(83): AplicativoControl->index()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#5 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#6 C:\xampp\htdocs\api\src\routes\Roteador.php(286): Router->run()
+#7 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#8 {main} 
+ **************************************************************************************************** 
+[2025-08-23 18:24:28.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nomeEmpresa' in 'field list'
+Code: 42S22
+File: C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php
+Line: 56
+Trace:
+#0 C:\xampp\htdocs\api\src\DAO\AplicativoDAO.php(56): PDO->query('SELECT idAplica...')
+#1 C:\xampp\htdocs\api\src\controllers\AplicativoControl.php(15): AplicativoDAO->readAll()
+#2 C:\xampp\htdocs\api\src\routes\Roteador.php(83): AplicativoControl->index()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#5 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#6 C:\xampp\htdocs\api\src\routes\Roteador.php(286): Router->run()
+#7 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#8 {main} 
+ **************************************************************************************************** 
+[2025-08-23 18:47:12.000] [Throwable] 
+ Throwable:
+Message: Banco de dados inicializado automaticamente
+Code: 0
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 102
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(221): Database::initializeDatabase()
+#1 C:\xampp\htdocs\api\src\routes\Roteador.php(96): Database::resetDatabase()
+#2 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#5 C:\xampp\htdocs\api\src\routes\Roteador.php(326): Router->run()
+#6 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#7 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:12:48.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '// Aumentado para hash bcrypt
+                tipo ENUM('admin', 'user') DEFA...' at line 5
+Code: 42000
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 163
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(163): PDO->exec('CREATE TABLE IF...')
+#1 C:\xampp\htdocs\api\src\db\Database.php(98): Database::createTables(Object(PDO))
+#2 C:\xampp\htdocs\api\src\db\Database.php(248): Database::initializeDatabase()
+#3 C:\xampp\htdocs\api\src\routes\Roteador.php(87): Database::resetDatabase()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#5 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#6 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#7 C:\xampp\htdocs\api\src\routes\Roteador.php(418): Router->run()
+#8 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#9 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:12:49.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aula_api_2024.usuario' doesn't exist
+Code: 42S02
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 209
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(209): PDO->exec('INSERT IGNORE I...')
+#1 C:\xampp\htdocs\api\src\db\Database.php(101): Database::seedInitialData(Object(PDO))
+#2 C:\xampp\htdocs\api\src\db\Database.php(248): Database::initializeDatabase()
+#3 C:\xampp\htdocs\api\src\routes\Roteador.php(87): Database::resetDatabase()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#5 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#6 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#7 C:\xampp\htdocs\api\src\routes\Roteador.php(418): Router->run()
+#8 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#9 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:12:49.000] [Throwable] 
+ Throwable:
+Message: Banco de dados inicializado automaticamente
+Code: 0
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 103
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(248): Database::initializeDatabase()
+#1 C:\xampp\htdocs\api\src\routes\Roteador.php(87): Database::resetDatabase()
+#2 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#5 C:\xampp\htdocs\api\src\routes\Roteador.php(418): Router->run()
+#6 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#7 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:16:50.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '// Aumentado para hash bcrypt
+                tipo ENUM('admin', 'user') DEFA...' at line 5
+Code: 42000
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 163
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(163): PDO->exec('CREATE TABLE IF...')
+#1 C:\xampp\htdocs\api\src\db\Database.php(98): Database::createTables(Object(PDO))
+#2 C:\xampp\htdocs\api\src\db\Database.php(248): Database::initializeDatabase()
+#3 C:\xampp\htdocs\api\src\routes\Roteador.php(93): Database::resetDatabase()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#5 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#6 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#7 C:\xampp\htdocs\api\src\routes\Roteador.php(424): Router->run()
+#8 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#9 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:16:51.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aula_api_2024.usuario' doesn't exist
+Code: 42S02
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 209
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(209): PDO->exec('INSERT IGNORE I...')
+#1 C:\xampp\htdocs\api\src\db\Database.php(101): Database::seedInitialData(Object(PDO))
+#2 C:\xampp\htdocs\api\src\db\Database.php(248): Database::initializeDatabase()
+#3 C:\xampp\htdocs\api\src\routes\Roteador.php(93): Database::resetDatabase()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#5 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#6 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#7 C:\xampp\htdocs\api\src\routes\Roteador.php(424): Router->run()
+#8 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#9 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:16:51.000] [Throwable] 
+ Throwable:
+Message: Banco de dados inicializado automaticamente
+Code: 0
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 103
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(248): Database::initializeDatabase()
+#1 C:\xampp\htdocs\api\src\routes\Roteador.php(93): Database::resetDatabase()
+#2 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#5 C:\xampp\htdocs\api\src\routes\Roteador.php(424): Router->run()
+#6 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#7 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:22:32.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '// Aumentado para hash bcrypt
+                tipo ENUM('admin', 'user') DEFA...' at line 5
+Code: 42000
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 163
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(163): PDO->exec('CREATE TABLE IF...')
+#1 C:\xampp\htdocs\api\src\db\Database.php(98): Database::createTables(Object(PDO))
+#2 C:\xampp\htdocs\api\src\db\Database.php(248): Database::initializeDatabase()
+#3 C:\xampp\htdocs\api\src\routes\Roteador.php(105): Database::resetDatabase()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#5 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#6 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#7 C:\xampp\htdocs\api\src\routes\Roteador.php(429): Router->run()
+#8 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#9 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:22:33.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aula_api_2024.usuario' doesn't exist
+Code: 42S02
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 209
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(209): PDO->exec('INSERT IGNORE I...')
+#1 C:\xampp\htdocs\api\src\db\Database.php(101): Database::seedInitialData(Object(PDO))
+#2 C:\xampp\htdocs\api\src\db\Database.php(248): Database::initializeDatabase()
+#3 C:\xampp\htdocs\api\src\routes\Roteador.php(105): Database::resetDatabase()
+#4 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#5 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#6 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#7 C:\xampp\htdocs\api\src\routes\Roteador.php(429): Router->run()
+#8 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#9 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:22:33.000] [Throwable] 
+ Throwable:
+Message: Banco de dados inicializado automaticamente
+Code: 0
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 103
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(248): Database::initializeDatabase()
+#1 C:\xampp\htdocs\api\src\routes\Roteador.php(105): Database::resetDatabase()
+#2 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#5 C:\xampp\htdocs\api\src\routes\Roteador.php(429): Router->run()
+#6 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#7 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:28:37.000] [Throwable] 
+ Throwable:
+Message: Banco de dados inicializado automaticamente
+Code: 0
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 93
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(225): Database::initializeDatabase()
+#1 C:\xampp\htdocs\api\src\routes\Roteador.php(105): Database::resetDatabase()
+#2 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#5 C:\xampp\htdocs\api\src\routes\Roteador.php(429): Router->run()
+#6 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#7 {main} 
+ **************************************************************************************************** 
+[2025-08-25 03:30:38.000] [Throwable] 
+ Throwable:
+Message: Banco de dados inicializado automaticamente
+Code: 0
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 93
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(225): Database::initializeDatabase()
+#1 C:\xampp\htdocs\api\src\routes\Roteador.php(105): Database::resetDatabase()
+#2 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#5 C:\xampp\htdocs\api\src\routes\Roteador.php(429): Router->run()
+#6 C:\xampp\htdocs\api\index.php(9): Roteador->start()
+#7 {main} 
+ **************************************************************************************************** 
+[2025-08-25 07:47:51.000] [Throwable] 
+ Throwable:
+Message: Banco de dados inicializado automaticamente
+Code: 0
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 93
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(226): Database::initializeDatabase()
+#1 C:\xampp\htdocs\api\src\routes\Roteador.php(98): Database::resetDatabase()
+#2 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#5 C:\xampp\htdocs\api\src\routes\Roteador.php(373): Router->run()
+#6 C:\xampp\htdocs\api\index.php(32): Roteador->start()
+#7 {main} 
+ **************************************************************************************************** 
+[2025-08-25 14:16:15.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+Code: 1045
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 38
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(38): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\api\src\db\Database.php(22): Database::connect()
+#2 C:\xampp\htdocs\api\src\DAO\LoginDAO.php(26): Database::getConnection()
+#3 C:\xampp\htdocs\api\src\controllers\LoginControl.php(17): LoginDAO->verificarLogin(Object(Usuario))
+#4 C:\xampp\htdocs\api\src\routes\Roteador.php(134): LoginControl->autenticar(Object(stdClass))
+#5 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#6 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#7 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#8 C:\xampp\htdocs\api\src\routes\Roteador.php(373): Router->run()
+#9 C:\xampp\htdocs\api\index.php(32): Roteador->start()
+#10 {main} 
+ **************************************************************************************************** 
+[2025-08-25 14:18:01.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+Code: 1045
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 38
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(38): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\api\src\db\Database.php(22): Database::connect()
+#2 C:\xampp\htdocs\api\src\DAO\LoginDAO.php(26): Database::getConnection()
+#3 C:\xampp\htdocs\api\src\controllers\LoginControl.php(17): LoginDAO->verificarLogin(Object(Usuario))
+#4 C:\xampp\htdocs\api\src\routes\Roteador.php(134): LoginControl->autenticar(Object(stdClass))
+#5 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#6 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#7 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#8 C:\xampp\htdocs\api\src\routes\Roteador.php(373): Router->run()
+#9 C:\xampp\htdocs\api\index.php(32): Roteador->start()
+#10 {main} 
+ **************************************************************************************************** 
+[2025-08-25 14:22:02.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+Code: 1045
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 221
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(221): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\api\src\routes\Roteador.php(107): Database::resetDatabase()
+#2 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#5 C:\xampp\htdocs\api\src\routes\Roteador.php(373): Router->run()
+#6 C:\xampp\htdocs\api\index.php(32): Roteador->start()
+#7 {main} 
+ **************************************************************************************************** 
+[2025-08-25 14:22:31.000] [Throwable] 
+ Throwable:
+Message: Banco de dados inicializado automaticamente
+Code: 0
+File: C:\xampp\htdocs\api\src\db\Database.php
+Line: 93
+Trace:
+#0 C:\xampp\htdocs\api\src\db\Database.php(226): Database::initializeDatabase()
+#1 C:\xampp\htdocs\api\src\routes\Roteador.php(107): Database::resetDatabase()
+#2 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#3 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#4 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#5 C:\xampp\htdocs\api\src\routes\Roteador.php(373): Router->run()
+#6 C:\xampp\htdocs\api\index.php(32): Roteador->start()
+#7 {main} 
+ **************************************************************************************************** 
+[2025-08-25 14:57:25.000] [Throwable] 
+ Throwable:
+Message: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'tipo' at row 1
+Code: 01000
+File: C:\xampp\htdocs\api\src\DAO\UsuarioDAO.php
+Line: 33
+Trace:
+#0 C:\xampp\htdocs\api\src\DAO\UsuarioDAO.php(33): PDOStatement->execute()
+#1 C:\xampp\htdocs\api\src\DAO\UsuarioDAO.php(18): UsuarioDAO->createWithoutId(Object(Usuario))
+#2 C:\xampp\htdocs\api\src\controllers\UsuarioControl.php(71): UsuarioDAO->create(Object(Usuario))
+#3 C:\xampp\htdocs\api\src\routes\Roteador.php(255): UsuarioControl->store(Object(stdClass))
+#4 C:\xampp\htdocs\api\src\routes\Router.php(458): Roteador->{closure}()
+#5 C:\xampp\htdocs\api\src\routes\Router.php(440): Router->invoke(Object(Closure), Array)
+#6 C:\xampp\htdocs\api\src\routes\Router.php(287): Router->handle(Array, true)
+#7 C:\xampp\htdocs\api\src\routes\Roteador.php(373): Router->run()
+#8 C:\xampp\htdocs\api\index.php(32): Roteador->start()
+#9 {main} 
+ **************************************************************************************************** 

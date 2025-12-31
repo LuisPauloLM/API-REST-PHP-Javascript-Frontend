@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veículos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+
+    .card {
+      margin-bottom: 15px;
+      border: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      margin: 2px;
+    }
+
+    .table-responsive {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <!-- Cabeçalho simples -->
+    <div class="d-flex justify-content-between align-items-center mb-3 p-2 bg-primary text-white rounded">
+      <h4 class="m-0">Veículos</h4>
+      <div>
+        <a href="Dashboard.html" class="btn btn-sm btn-light">Voltar</a>
+        <button onclick="logout()" class="btn btn-sm btn-light">Sair</button>
+      </div>
+    </div>
+
+    <!-- Formulário compacto -->
+    <div class="card">
+      <div class="card-body p-3">
+        <h6 class="card-title">Cadastrar Veículo</h6>
+        <div class="row g-2">
+          <div class="col-md-4">
+            <input type="text" id="txtNome" class="form-control form-control-sm" placeholder="Nome do veículo">
+          </div>
+          <div class="col-md-3">
+            <select id="selectUsado" class="form-select form-select-sm">
+              <option value="1">Usado</option>
+              <option value="0">Novo</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select id="selectAplicativo" class="form-select form-select-sm">
+              <option value="">Carregando...</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button id="btnCriar" class="btn btn-success btn-sm w-100">Criar</button>
+            <button id="btnAtualizar" class="btn btn-warning btn-sm w-100 d-none">Atualizar</button>
+          </div>
+        </div>
+        <input type="hidden" id="txtId">
+      </div>
+    </div>
+
+    <!-- Tabela simples -->
+    <div class="card">
+      <div class="card-body p-3">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h6 class="m-0">Lista de Veículos</h6>
+          <button onclick="carregarVeiculos()" class="btn btn-sm btn-outline-primary">Atualizar</button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-sm table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Estado</th>
+                <th>Aplicativo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaVeiculos">
+              <tr>
+                <td colspan="5" class="text-center">Carregando...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import ApiService from './ApiService.js';
+
+    // Verificar login
+    if (!ApiService.isLoggedIn()) {
+      window.location.href = 'Login.html';
+    }
+
+    const api = new ApiService(ApiService.getUserData().data.token);
+    let veiculos = [];
+    let aplicativos = [];
+
+    // Elementos
+    const txtId = document.getElementById('txtId');
+    const txtNome = document.getElementById('txtNome');
+    const selectUsado = document.getElementById('selectUsado');
+    const selectAplicativo = document.getElementById('selectAplicativo');
+    const btnCriar = document.getElementById('btnCriar');
+    const btnAtualizar = document.getElementById('btnAtualizar');
+    const tabela = document.getElementById('tabelaVeiculos');
+
+    // Carregar aplicativos para o select
+    async function carregarAplicativos() {
+      try {
+        const resposta = await api.get('aplicativos');
+        if (resposta.success && resposta.data.aplicativos) {
+          aplicativos = resposta.data.aplicativos;
+          selectAplicativo.innerHTML = '<option value="">Selecione um aplicativo</option>';
+          aplicativos.forEach(app => {
+            selectAplicativo.innerHTML += `<option value="${app.idAplicativo}">${app.nomeAplicativo}</option>`;
+          });
+        }
+      } catch (error) {
+        console.error('Erro ao carregar aplicativos:', error);
+      }
+    }
+
+    // Carregar veículos
+    async function carregarVeiculos() {
+      try {
+        tabela.innerHTML = '<tr><td colspan="5" class="text-center">Carregando...</td></tr>';
+        const resposta = await api.get('veiculos');
+
+        if (resposta.success && resposta.data.veiculos) {
+          veiculos = resposta.data.veiculos;
+          renderizarTabela();
+        } else {
+          tabela.innerHTML = '<tr><td colspan="5" class="text-center text-danger">Erro ao carregar</td></tr>';
+        }
+      } catch (error) {
+        console.error('Erro:', error);
+        tabela.innerHTML = '<tr><td colspan="5" class="text-center text-danger">Erro ao carregar</td></tr>';
+      }
+    }
+
+    // Renderizar tabela
+    function renderizarTabela() {
+      if (veiculos.length === 0) {
+        tabela.innerHTML = '<tr><td colspan="5" class="text-center">Nenhum veículo</td></tr>';
+        return;
+      }
+
+      tabela.innerHTML = veiculos.map(veiculo => `
+                <tr>
+                    <td>${veiculo.idVeiculo}</td>
+                    <td>${veiculo.nomeVeiculo}</td>
+                    <td>${veiculo.usado ? 'Usado' : 'Novo'}</td>
+                    <td>${veiculo.aplicativo ? veiculo.aplicativo.nomeAplicativo : 'N/A'}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info" onclick="selecionar(${veiculo.idVeiculo})">Editar</button>
+                        <button class="btn btn-sm btn-danger" onclick="excluir(${veiculo.idVeiculo})">Excluir</button>
+                    </td>
+                </tr>
+            `).join('');
+    }
+
+    // Criar veículo
+    async function criarVeiculo() {
+      if (!txtNome.value.trim()) {
+        alert('Digite o nome do veículo');
+        return;
+      }
+
+      if (!selectAplicativo.value) {
+        alert('Selecione um aplicativo');
+        return;
+      }
+
+      const dados = {
+        veiculo: {
+          nomeVeiculo: txtNome.value.trim(),
+          usado: parseInt(selectUsado.value),
+          aplicativo_idAplicativo: parseInt(selectAplicativo.value)
+        }
+      };
+
+      try {
+        const resposta = await api.post('veiculos', dados);
+        if (resposta.success) {
+          // Limpar formulário
+          txtNome.value = '';
+          selectUsado.value = '1';
+          selectAplicativo.value = '';
+
+          carregarVeiculos();
+          alert('Veículo criado!');
+        } else {
+          alert('Erro: ' + (resposta.error?.message || 'Erro desconhecido'));
+        }
+      } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao criar veículo');
+      }
+    }
+
+    // Selecionar para editar
+    window.selecionar = function (id) {
+      const veiculo = veiculos.find(v => v.idVeiculo == id);
+      if (veiculo) {
+        txtId.value = veiculo.idVeiculo;
+        txtNome.value = veiculo.nomeVeiculo;
+        selectUsado.value = veiculo.usado ? '1' : '0';
+        selectAplicativo.value = veiculo.aplicativo ? veiculo.aplicativo.idAplicativo : '';
+
+        btnCriar.classList.add('d-none');
+        btnAtualizar.classList.remove('d-none');
+      }
+    };
+
+    // Atualizar veículo
+    btnAtualizar.onclick = async function () {
+      if (!txtId.value || !txtNome.value.trim() || !selectAplicativo.value) {
+        alert('Dados inválidos');
+        return;
+      }
+
+      const dados = {
+        veiculo: {
+          nomeVeiculo: txtNome.value.trim(),
+          usado: parseInt(selectUsado.value),
+          aplicativo_idAplicativo: parseInt(selectAplicativo.value)
+        }
+      };
+
+      try {
+        const resposta = await api.put('veiculos', txtId.value, dados);
+        if (resposta.success) {
+          cancelarEdicao();
+          carregarVeiculos();
+          alert('Veículo atualizado!');
+        } else {
+          alert('Erro: ' + (resposta.error?.message || 'Erro desconhecido'));
+        }
+      } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao atualizar');
+      }
+    };
+
+    // Excluir veículo
+    window.excluir = function (id) {
+      if (confirm('Excluir este veículo?')) {
+        api.delete('veiculos', id)
+          .then(resposta => {
+            if (resposta.success) {
+              carregarVeiculos();
+              alert('Veículo excluído!');
+            } else {
+              alert('Erro: ' + (resposta.error?.message || 'Erro desconhecido'));
+            }
+          })
+          .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao excluir');
+          });
+      }
+    };
+
+    // Cancelar edição
+    function cancelarEdicao() {
+      txtId.value = '';
+      txtNome.value = '';
+      selectUsado.value = '1';
+      selectAplicativo.value = '';
+      btnCriar.classList.remove('d-none');
+      btnAtualizar.classList.add('d-none');
+    }
+
+    // Logout
+    window.logout = function () {
+      ApiService.logout();
+    };
+
+    // Eventos
+    btnCriar.onclick = criarVeiculo;
+
+    // Tecla Enter no formulário
+    txtNome.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        if (btnAtualizar.classList.contains('d-none')) {
+          criarVeiculo();
+        } else {
+          btnAtualizar.click();
+        }
+      }
+    });
+
+    // Inicializar
+    carregarAplicativos();
+    carregarVeiculos();
+  </script>
+</body>
+
+</html>
